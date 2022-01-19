@@ -1,0 +1,5 @@
+aefeb8b2ff74c8539c8194c2a0c39f1e cowpi-data/CowPi_V1.0_16S_precalculated.tab.gz
+b91ab30a75eebb5a029022501dbe101f cowpi-data/CowPi_V1.0_all_rumen_16S_combined.renamed.fas.gz
+21d8e0c9a1642783d8298d8b4a06e9a1 cowpi-data/CowPi_V1.0_ko_precalc1.tab.gz
+1b6d0ee851b227fede9de629f860b6ad cowpi-data/Huws_16S_colonisation_OTU.fas.txt
+ffb51fef5c71c4fea4219341509e540a cowpi-data/Huws_16S_colonisation_OTU_abundance_Table.txt

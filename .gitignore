@@ -1,0 +1,7 @@
+cowpi-data/
+test/
+output/
+*.biom
+*.tsv
+*.fasta
+

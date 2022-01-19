@@ -1,0 +1,13 @@
+name: cowpi
+channels:
+  - defaults
+  - conda-forge
+  - bioconda
+dependencies:
+  - pip
+  - picrust
+  - python
+  - vsearch
+  - r
+  - r-plyr
+prefix: /home/francesco/miniconda3/envs/cowpi
