@@ -14,7 +14,7 @@ PICRUST_INPUT_BIOM=$OUTPUT_DATA/OTU.biom
 
 NORMALISED_OTU=$OUTPUT_DATA/normalized_otus.biom
 METAGENOME_PRED=$OUTPUT_DATA/metagenome_predictions.biom
-PATHWAYS_FILE=$OUTPUT_DATA/collpased_pathways.txt
+PATHWAYS_FILE=$OUTPUT_DATA/collapased_pathways.txt
 
 mkdir -p $OUTPUT_DATA
 
@@ -45,3 +45,10 @@ categorize_by_function.py --verbose -i $METAGENOME_PRED -c KEGG_Pathways -l 3 --
 
 echo "######################"
 echo "Results in file $PATHWAYS_FILE"
+
+echo "######################"
+biom convert -i $METAGENOME_PRED -o $OUTPUT_DATA/cowpi-ko-counts.tsv --to-tsv
+
+python make-module-table.py $OUTPUT_DATA/cowpi-ko-counts.tsv $COWPI_DATA/module-data.tsv $COWPI_DATA/module-names.tsv $OUTPUT_DATA/collapsed_modules.tsv $OUTPUT_DATA/collapsed_modules_reduced.tsv
+
+echo "Results for Kegg Modules in $OUTPUT_DATA/collapsed_modules.tsv $OUTPUT_DATA/collapsed_modules_reduced.tsv"
