@@ -63,6 +63,6 @@ If everything is correctly prepared, just run
 sh run-cowpi.sh otu-seqs.fa otu-table.tsv
 ```
 
-This will create a directory names `output` and all intermediate files in it. The final output is called `collpased_pathways.txt`.
+This will create a directory names `output` and all intermediate files in it. The final output is called `collapased_pathways.txt`. From v0.2, two more files are produced: `collapsed_modules.tsv` and `collapsed_modules_reduced.tsv`. These files includes Keegg Module data, instead of Pathways and the second one only includes KOs that are unique to the Module.
 
 > You will notice that a OTU table whose samples are integers will be renamed from `1000` to `X1000`. This is something that *R* makes automatically when loading a dataframe.
