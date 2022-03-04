@@ -14,5 +14,5 @@ wget -O $COWPI_DATA/Huws_16S_colonisation_OTU_abundance_Table.txt "https://zenod
 md5sum -c md5sum.txt
 
 echo "Download Module Data"
-curl http://rest.kegg.jp/link/ko/module | sed 's/md://' | sed 's/ko://' > module-data.tsv
-curl http://rest.kegg.jp/list/module | sed 's/md://' > module-names.tsv
+curl http://rest.kegg.jp/link/ko/module | sed 's/md://' | sed 's/ko://' > $COWPI_DATA/module-data.tsv
+curl http://rest.kegg.jp/list/module | sed 's/md://' > $COWPI_DATA/module-names.tsv
