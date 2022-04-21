@@ -16,3 +16,7 @@ md5sum -c md5sum.txt
 echo "Download Module Data"
 curl http://rest.kegg.jp/link/ko/module | sed 's/md://' | sed 's/ko://' > $COWPI_DATA/module-data.tsv
 curl http://rest.kegg.jp/list/module | sed 's/md://' > $COWPI_DATA/module-names.tsv
+
+echo "Add custom Butyrate Production Module"
+cat butyrate-module.tsv >> $COWPI_DATA/module-data.tsv
+echo -e "M99999\t[CUSTOM] Glucose to Butyrate" >> $COWPI_DATA/module-names.tsv

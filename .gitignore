@@ -2,6 +2,6 @@ cowpi-data/
 test/
 output/
 *.biom
-*.tsv
+feature-table.tsv
 *.fasta
 

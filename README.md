@@ -15,7 +15,7 @@
 Use script `get-data.sh` and it will create a directory `cowpi-data`.
 
 ## Correct/Decompress Data
-CowPi data needs to be decompressed, but the DB is in aligned FASTA format, so `-` must be removed. Use `handle-data.sh`.
+CowPi data needs to be decompressed, but the DB is in aligned FASTA format, so `-` characters must be removed. Use `handle-data.sh` after downloading the data.
 
 # CowPi Specifics
 
@@ -66,3 +66,11 @@ sh run-cowpi.sh otu-seqs.fa otu-table.tsv
 This will create a directory names `output` and all intermediate files in it. The final output is called `collapased_pathways.txt`. From v0.2, two more files are produced: `collapsed_modules.tsv` and `collapsed_modules_reduced.tsv`. These files includes Keegg Module data, instead of Pathways and the second one only includes KOs that are unique to the Module.
 
 > You will notice that a OTU table whose samples are integers will be renamed from `1000` to `X1000`. This is something that *R* makes automatically when loading a dataframe.
+
+## Butyrate Module
+
+A module not present in Kegg, with ID *M99999* is added when data is downloaded. I took the information about this module from [Electron transport phosphorylation in rumen butyrivibrios: unprecedented ATP yield for glucose fermentation to butyrate](https://www.frontiersin.org/articles/10.3389/fmicb.2015.00622/full). I cannot clash with other Kegg modules and the name includes a *[CUSTOM]* prefix in the name, if it not useful, comment the last 2 lines in `get-data.sh` or delete the lines that refer that starts with *M99999* in `cowpi-data/module-data.tsv` and `cowpi-data/module-names.tsv`. For example with `grep`:
+
+`grep -v M99999 cowpi-data/module-data.tsv > module-data-new.tsv`
+
+then rename `module-data-new.tsv` to `module-data.tsv`. Do the same thing with module names, although is not necessary.
