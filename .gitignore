@@ -4,4 +4,4 @@ output/
 *.biom
 feature-table.tsv
 *.fasta
-
+*.gff.gz
