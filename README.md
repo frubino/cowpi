@@ -1,4 +1,6 @@
-# CowPi for running under a Conda Environment
+---
+title: CowPi for running under a Conda Environment
+---
 
 # Prepare
 
@@ -20,12 +22,14 @@ CowPi data needs to be decompressed, but the DB is in aligned FASTA format, so `
 # CowPi Specifics
 
 CowPi expects as input a FASTA file with the OTU representatives and a OTU count table. The table needs to:
+
 * sample names with *NO SPACES*
 * last column is names *total* and is the sum of the row
 * rows are the OTU and colums are the samples
 * First column is the header
 
 # If Using QIIME2
+
 > I'm assuming that you used the command `qiime vsearch cluster-features-de-novo`
 
 To export files from QIIME2 to use with CowPi, you need to export them. Other type of clustering may have different names, but I can only assume what I usually use. Additionally, you run the `convert-qiime2-biom.sh` script on the BIOM file exported by QIIME2.
@@ -41,6 +45,7 @@ qiime tools export \
 Which will create directory `representative-seqs-export` with a FASTA file in it.
 
 ## OTU Table
+
 It's the file specified with `--o-clustered-table`
 ```bash
 qiime tools export --input-path otu-table.qza --output-path otu-table-export
@@ -58,7 +63,9 @@ This will create a file `feature-table.tsv` can now be used with CowPi.
 > The sample names are not changed, so take care that no spaces are there.
 
 # Run CowPi
+
 If everything is correctly prepared, just run
+
 ```bash
 sh run-cowpi.sh otu-seqs.fa otu-table.tsv
 ```
