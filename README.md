@@ -47,9 +47,11 @@ Which will create directory `representative-seqs-export` with a FASTA file in it
 ## OTU Table
 
 It's the file specified with `--o-clustered-table`
+
 ```bash
 qiime tools export --input-path otu-table.qza --output-path otu-table-export
 ```
+
 Which will create directory `otu-table-export` with a BIOM file in it.
 
 Assuming the file is in `otu-table-export/feature-table.biom`, run:
