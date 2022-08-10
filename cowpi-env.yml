@@ -10,4 +10,4 @@ dependencies:
   - vsearch
   - r
   - r-plyr
-prefix: /home/francesco/miniconda3/envs/cowpi
+

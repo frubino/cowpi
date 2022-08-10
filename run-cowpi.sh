@@ -1,3 +1,5 @@
+#!/bin/sh
+
 COWPI_DATA=./cowpi-data
 OUTPUT_DATA=./output
 
