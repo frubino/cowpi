@@ -1,13 +1,22 @@
 #!/bin/sh
 
+# This interrupts the script at the first error
+set -e 
+
 COWPI_DATA=./cowpi-data
 OUTPUT_DATA=./output
 
 # CowPi Data
-SEQS_DB=$COWPI_DATA/CowPi_V1.0_all_rumen_16S_combined.renamed.fas
+SEQS_DB=$COWPI_DATA"/CowPi_V1.0_all_rumen_16S_combined.renamed.fas"
 
 OTU_SEQS=$1
 OTU_TABLE=$2
+
+if [[ -z "$OTU_SEQS" || -z "$OTU_TABLE" ]]; then
+    echo "Representive sequences and OTU table must be passed in that order"
+    exit 1
+fi
+
 TMP_MISS=$OUTPUT_DATA/data-miss.txt
 MISS_NAMES=$OUTPUT_DATA/data-missnames.txt
 HITS=$OUTPUT_DATA/data-hits.txt
@@ -20,14 +29,14 @@ PATHWAYS_FILE=$OUTPUT_DATA/collapased_pathways.txt
 
 mkdir -p $OUTPUT_DATA
 
+echo "Running vsearch using DB" "$SEQS_DB" "on" "$OTU_SEQS"
 # Instead of usearch use vsearch
 vsearch -usearch_global $OTU_SEQS -db $SEQS_DB -id 0.75 -strand both -userout $HITS -userfields query+target -notmatched $TMP_MISS
 
-##### New Extract names bit (actually only from none hits now
-
+echo "Now Extract names bit (actually only from none hits now"
 grep ">" $TMP_MISS | sed 's/.*>//' > $MISS_NAMES
 
-# Convert format for PiCrust
+echo "Convert format for PiCrust"
 Rscript --verbose convert-data.r $OTU_TABLE $HITS $MISS_NAMES $PICRUST_INPUT_TEXT
 
 #### Convert to BIOM ####

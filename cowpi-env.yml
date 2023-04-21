@@ -10,4 +10,4 @@ dependencies:
   - vsearch
   - r
   - r-plyr
-
+  - bioconductor-deseq2
